@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+	<title>BANKING SYSTEM</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<style type="text/css">
+		#header
+		{
+			border: 3px solid black;
+			background: rgb(0, 123, 194);
+			text-align: center;
+			color: red;
+		}
+		#header h1
+		{
+			font-size:50px;
+		}
+		#left
+		{
+
+		}
+		#divide
+		{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			height: 60rem;
+			background-color:#a6d6d4;
+		}
+		#list-example button
+		{
+			font-size: 15px;
+			background-color: rgb(79, 181, 249);
+			border-radius: 5px;  
+            font-size: medium;  
+            text-decoration-color: red;
+            
+            
+
+		}
+		#right
+		{
+			padding-right: 25%;
+			padding-bottom: 10%;
+
+		}
+		#bank
+		{
+			font-size: 35px;
+			background-color: rgb(100, 100, 100);
+			color :black;
+			text-align: center;
+
+		}
+		.display
+		{
+			font-size: 18px;
+			padding-top: 4rem;
+		}
+		.display input
+		{
+			font-size: 17px;
+			border-radius: 5px;
+		}
+		.display button
+		{
+			border-radius: 5px;
+			background-color: skyblue;
+		}
+		.display table, th, td 
+		{
+			font-size: 15px;
+            border:2px double black;
+          } 
+          .details 
+          {
+            text-align: center; 
+            padding-left: 30px;
+          }
+	</style>
+
+	</head>
+<body>
+	<div class="main">
+		<div id="header">
+			<h3>BANKING SYSTEM</h3>
+		</div>
+		<div id="bank">BANK OF INDIA</div>
+		<div id="divide">
+			<div id="left">
+				<div id="list-example" class="list-group">
+				  <button class="list-group-item list-group-item-action" id="create">Create Account</button><br>
+				  <button class="list-group-item list-group-item-action" id="delete">Delete Account</button><br>
+				  <button class="list-group-item list-group-item-action" id="update">Update Account</button><br>
+			    <button class="list-group-item list-group-item-action"  id="getall">Getall account Detailes</button><br>
+				  <button class="list-group-item list-group-item-action" id="single">Get Single Account Details</button><br>
+				  <button class="list-group-item list-group-item-action" id="deposit">Deposit Account</button><br>
+			      <button class="list-group-item list-group-item-action" id="withdraw">WithDraw Amount</button><br>
+			      <button class="list-group-item list-group-item-action" id="transfer">Transefer funds</button><br>
+				</div><br>
+			</div>
+					
+			<div id="right">
+				<section class="display">
+					
+				</section>
+				<div id="getdetails">
+					
+				</div>
+			</div>
+
+
+	</div>
+
+	<script type="text/javascript">
+		
+		let btncreate=document.querySelector('#create');
+		let btndelete=document.querySelector('#delete');
+		let btnupdate=document.querySelector('#update');
+		let btngetall=document.querySelector('#getall');
+		let btnsingle=document.querySelector('#single');
+		let btndeposit=document.querySelector('#deposit');
+		let btnwithdraw=document.querySelector('#withdraw');
+		let btntransfer=document.querySelector('#transfer');
+		let display=document.querySelector('.display');
+		let details=document.querySelector('#getdetails');
+
+
+
+
+		btncreate.addEventListener('click',()=>
+        {
+        display.innerHTML=`
+		<div class="create-acc"> 
+			<form style="margin: auto; width: 220px;>
+            Customer Name:<input type="text" name="namec" placeholder="CustomerName"><br>
+            Contact Number:<input type="mobbile" name="num" placeholder="enterNumber"><br>
+            Gender: <br> Male<input type="radio" name="gender">
+                    female<input type="radio" name="gender"><br>
+            Address:<input type="textarea" name="info"><br>
+            age: <input type="Number" name="age"><br>
+            Email Id:<input type="email" name="email"><br><br>
+            Date <input type="Date" name="date"><br> <br>
+            AccountType: <select>
+                        <option>savings</option>
+                        <option>current</option>
+                        </select><br><br>
+            <button>Submit</button> <button>Reset</button> 
+            </form>
+			</div>`;
+
+		});
+
+		btndelete.addEventListener('click',()=>
+        {
+
+			display.innerHTML=`<h2>Enter Account Detailes To Delete</h2>
+            AccountNumber<input type="Number" name="Acct"><br><br>
+            <button>Submit</button> <button>Reset</button>`;
+		});
+
+
+	btnupdate.addEventListener('click',()=>{
+
+			display.innerHTML=`<h2>Enter Account Detailes To Update</h2>
+AccountNumber<input type="Number" name="Acct" placeholder="AccountNumber"><br><br>
+<button>Submit</button> <button>Reset</button>
+`;
+		});
+
+	btngetall.addEventListener('click',()=>{
+
+			display.innerHTML=` <div class="details">
+            <h2>Displaying all deatails</h2>
+<table>
+	<tr>
+	    <th>AccountNumber</th>
+	    <th>Customer Name</th>
+	    <th>Contact Number</th>
+	    <th>Gender</th>
+	    <th>Address</th>
+	    <th>Age</th>
+	    <th>Mail-Id</th>
+	    <th>Date</th>
+	    <th>AccountType</th>
+	    <th>Balance</th>
+  </tr>
+  <tr>
+  	<td>9010914067</td>
+  	<td>Surender</td>
+  	<td>3605712576</td>
+  	<td>male</td>
+  	<td>Hyderabad</td>
+  	<td>22</td>
+  	<td>suri@gmail.com</td>
+  	<td>23/09/2022</td>
+  	<td>savings</td>
+  	<td>150000</td>
+  </tr>
+  <tr>
+  	<td>1235469870</td>
+  	<td>raju</td>
+  	<td>9876543210</td>
+  	<td>male</td>
+  	<td>Khammam</td>
+  	<td>25</td>
+  	<td>raju@gmail.com</td>
+  	<td>12/09/2022</td>
+  	<td>savings</td>
+  	<td>50000</td>
+  </tr>
+  <tr>
+  	<td>0258963147</td>
+  	<td>srikanth</td>
+  	<td>6549871230</td>
+  	<td>male</td>
+  	<td>sathupalli</td>
+  	<td>30</td>
+  	<td>sri@gmail.com</td>
+  	<td>08/09/2022</td>
+  	<td>current</td>
+  	<td>100000</td>
+  </tr>
+</table> 
+</div>`;
+});
+
+	btnsingle.addEventListener('click',()=>{
+
+			display.innerHTML=`<h2>Enter Account Detailes To GetDeatails</h2>
+AccountNumber<input type="Number" name="Acct" placeholder="AccountNumber"><br><br>
+<button>Submit</button> <button>Reset</button>`;
+		});
+
+	btndeposit.addEventListener('click',()=>{
+
+			display.innerHTML=`AccountNumber<input type="Number" name="Acct" placeholder="AccountNumber"><br><br>
+DepositAmount<input type="Number" name="AcctD" placeholder="Deposit"><br><br>
+<button>Deposit</button> <button>clear</button>`;
+		});
+
+	btnwithdraw.addEventListener('click',()=>{
+
+			display.innerHTML=`
+            <form style="margin: auto; width: 220px; >
+            AccountNumber<input type="Number" name="Acct" placeholder="AccountNumber"><br><br>
+            Amount to WithDraw<input type="Number" name="AcctD" placeholder="Deposit"><br><br>
+            <button>WithDraw</button>
+            </form>`;
+		});
+
+	btntransfer.addEventListener('click',()=>{
+
+			display.innerHTML=`
+            <form style="margin: auto; width: 220px;>
+                From AccountNumber<input type="Number" name="Acct" placeholder="AccountNumber"><br><br>
+                To AccountNumber<input type="Number" name="AcctTo" placeholder="AccountNumber"><br><br>
+                Enter Amount To Transfer<input type="Number" name="tansfer"> 
+                </form>`;
+		});
+
+
+
+	</script>
+
+</body>
+</html>
